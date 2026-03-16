@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collaborative Data Analysis Projects — Anushriya Roy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f0f7f2;--surface:#fff;--border:#c8e6d0;--border-strong:#a3d4b0;--green:#1a7a4a;--green-mid:#2d9e62;--green-light:#4fc87e;--green-pale:#d4f0df;--green-soft:#e8f7ed;--accent:#0f5c38;--pop:#ff6b35;--pop2:#7c5cfc;--text:#0f1f15;--text-mid:#2d4a38;--muted:#6b8c76;--muted-light:#9ab5a2}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Geist Mono',monospace;background:var(--bg);color:var(--text);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,var(--border) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0;opacity:0.5}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;justify-content:space-between;align-items:center;background:rgba(240,247,242,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:18px;color:var(--green);display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;background:var(--green-light);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:0.5}}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:12px;padding:6px 14px;border-radius:100px;transition:all .18s}
+.nav-links a:hover{background:var(--green-soft);color:var(--green)}
+.nav-cta{background:var(--green)!important;color:white!important;font-weight:500}
+.page{max-width:860px;margin:0 auto;padding:100px 48px 80px;position:relative;z-index:1}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);text-decoration:none;margin-bottom:32px;transition:color .18s;font-weight:500}
+.back-link:hover{color:var(--green)}
+.proj-header{margin-bottom:40px}
+.proj-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.proj-badge{font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:100px;font-weight:600}
+.b-ai{background:rgba(124,92,252,0.1);color:#7c5cfc;border:1px solid rgba(124,92,252,0.2)}
+.b-data{background:rgba(26,122,74,0.1);color:var(--green);border:1px solid rgba(26,122,74,0.2)}
+.b-opt{background:rgba(255,107,53,0.1);color:var(--pop);border:1px solid rgba(255,107,53,0.2)}
+.b-viz{background:rgba(5,150,105,0.1);color:#059669;border:1px solid rgba(5,150,105,0.2)}
+.b-fashion{background:rgba(219,39,119,0.1);color:#be185d;border:1px solid rgba(219,39,119,0.2)}
+.b-deployed{background:rgba(249,115,22,0.1);color:#ea580c;border:1px solid rgba(249,115,22,0.2)}
+.proj-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1.5px;color:var(--text);margin-bottom:8px;line-height:1.1}
+.proj-sub{font-size:13px;color:var(--muted);font-weight:500}
+.proj-meta{display:flex;align-items:center;gap:16px;font-size:11px;color:var(--muted-light);padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:36px;flex-wrap:wrap}
+.proj-meta strong{color:var(--text-mid)}
+.action-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;background:var(--green);color:white;border-radius:10px;font-family:"Geist Mono",monospace;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s}
+.btn-primary:hover{background:var(--green-mid);transform:translateY(-2px);box-shadow:0 6px 24px rgba(26,122,74,0.3)}
+.btn-secondary{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;background:white;color:var(--text-mid);border-radius:10px;font-family:"Geist Mono",monospace;font-size:12px;font-weight:600;text-decoration:none;border:1.5px solid var(--border);transition:all .2s}
+.btn-secondary:hover{border-color:var(--green-mid);color:var(--green);transform:translateY(-2px)}
+.section{margin-bottom:40px}
+.section h2{font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px;letter-spacing:-.3px;display:flex;align-items:center;gap:8px}
+.section h2::after{content:'';flex:1;height:1px;background:var(--border)}
+.section p{font-size:13px;line-height:1.85;color:var(--muted);margin-bottom:10px}
+.section p strong{color:var(--text);font-weight:600}
+.highlights{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:8px}
+.hl-card{background:white;border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.hl-val{font-family:'Cabinet Grotesk',sans-serif;font-size:22px;font-weight:900;color:var(--green);letter-spacing:-1px;margin-bottom:2px}
+.hl-lbl{font-size:11px;color:var(--muted)}
+.stack-grid{display:flex;flex-wrap:wrap;gap:8px}
+.stag{font-size:11px;padding:5px 12px;border-radius:6px;background:white;border:1px solid var(--border);color:var(--text-mid);font-weight:500}
+.steps{counter-reset:step;display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:14px;align-items:flex-start}
+.step::before{counter-increment:step;content:counter(step);width:26px;height:26px;border-radius:50%;background:var(--green-soft);color:var(--green);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--border-strong);margin-top:2px}
+.step p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+.step p strong{color:var(--text)}
+.results-list{display:flex;flex-direction:column;gap:8px}
+.result-item{display:flex;align-items:flex-start;gap:10px;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:12.5px;color:var(--text-mid);line-height:1.6}
+.result-item::before{content:'✦';color:var(--green);font-size:12px;flex-shrink:0;margin-top:1px}
+.future-list{display:flex;flex-direction:column;gap:8px}
+.future-item{display:flex;align-items:flex-start;gap:10px;font-size:12.5px;color:var(--muted);line-height:1.6}
+.future-item::before{content:'→';color:var(--green-mid);flex-shrink:0;font-weight:700}
+footer{background:var(--accent);padding:24px 48px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.ft{font-size:11px;color:rgba(255,255,255,0.45)}
+.fl{display:flex;gap:20px}
+.fl a{font-size:11px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .18s}
+.fl a:hover{color:white}
+@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.page{padding:88px 20px 60px}footer{padding:20px;flex-direction:column;gap:10px;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><div class="nav-dot"></div>Anushriya Roy</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Say hello →</a></li>
+  </ul>
+</nav>
+<div class="page">
+  <a href="index.html#projects" class="back-link">← Back to all projects</a>
+
+  <div class="proj-header">
+    <div class="proj-eyebrow"><span class="proj-badge b-data">Collaboration</span></div>
+    <h1 class="proj-title">Collaborative Data Analysis Projects</h1>
+    <p class="proj-sub">Group Projects · EDA, Statistical Modelling & Reporting</p>
+  </div>
+  <div class="proj-meta">
+    <span><strong>Author</strong> Anushriya Roy + Team</span>
+    <span><strong>Type</strong> Data Analysis · Statistics</span>
+    <span><strong>Stack</strong> Python · Pandas · Statsmodels</span>
+  </div>
+  <div class="action-btns">
+    <a href="https://github.com/Anushriya24/data-analysis-group-projects" target="_blank" class="btn-secondary"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a>
+  </div>
+  <div class="section">
+    <h2>Overview</h2>
+    <p>Two collaborative end-to-end data science projects completed as part of the MSc Analytics & Management programme at London Business School. Both follow the full analytical lifecycle — from raw data through to stakeholder-ready output — delivered as <strong>interactive HTML reports</strong> that any business user can explore in a browser.</p>
+  </div>
+  <div class="section">
+    <h2>Project 1 — HW3 Group Analysis</h2>
+    <div class="results-list">
+      <div class="result-item">Data cleaning and preprocessing pipeline</div>
+      <div class="result-item">Descriptive statistics and distribution analysis</div>
+      <div class="result-item">Correlation analysis and feature relationships</div>
+      <div class="result-item">Statistical hypothesis testing</div>
+      <div class="result-item">Regression modelling with business interpretation</div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Project 2 — Final Group Project</h2>
+    <div class="results-list">
+      <div class="result-item">Multi-source data integration and cleaning</div>
+      <div class="result-item">Advanced EDA with visual storytelling</div>
+      <div class="result-item">Predictive modelling and validation</div>
+      <div class="result-item">Business insight generation and recommendations</div>
+      <div class="result-item">Stakeholder-ready HTML report presentation</div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Tech Stack</h2>
+    <div class="stack-grid">
+      <span class="stag">Python</span><span class="stag">Pandas</span><span class="stag">Seaborn</span>
+      <span class="stag">Matplotlib</span><span class="stag">Statsmodels</span><span class="stag">Jupyter</span>
+    </div>
+  </div>
+
+</div>
+<footer>
+  <div class="ft">© 2025 Anushriya Roy</div>
+  <div class="fl">
+    <a href="https://github.com/Anushriya24" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/anushriya24/" target="_blank">LinkedIn</a>
+    <a href="https://portfolio-amber-tau-15.vercel.app/">Portfolio</a>
+  </div>
+</footer>
+</body>
+</html>
