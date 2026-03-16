@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anushriya Roy — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f0f7f2; --surface:#fff; --card:#fff;
+  --border:#c8e6d0; --border-strong:#a3d4b0;
+  --green:#1a7a4a; --green-mid:#2d9e62; --green-light:#4fc87e;
+  --green-pale:#d4f0df; --green-soft:#e8f7ed; --mint:#b8eece;
+  --accent:#0f5c38; --pop:#ff6b35; --pop2:#7c5cfc;
+  --text:#0f1f15; --text-mid:#2d4a38; --muted:#6b8c76; --muted-light:#9ab5a2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Geist Mono',monospace;background:var(--bg);color:var(--text);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,var(--border) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0;opacity:0.5}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;justify-content:space-between;align-items:center;background:rgba(240,247,242,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:18px;color:var(--green);display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;background:var(--green-light);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:0.5}}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:12px;padding:6px 14px;border-radius:100px;transition:all .18s}
+.nav-links a:hover{background:var(--green-soft);color:var(--green)}
+.nav-cta{background:var(--green)!important;color:white!important;font-weight:500}
+.nav-cta:hover{background:var(--green-mid)!important;box-shadow:0 4px 16px rgba(26,122,74,0.25);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;padding:100px 48px 72px;display:flex;align-items:center;position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.blob1{width:540px;height:540px;background:radial-gradient(circle,rgba(79,200,126,0.16),transparent 70%);top:-100px;right:-80px;animation:d1 13s ease-in-out infinite}
+.blob2{width:360px;height:360px;background:radial-gradient(circle,rgba(184,238,206,0.22),transparent 70%);bottom:0;left:-60px;animation:d2 16s ease-in-out infinite}
+@keyframes d1{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,24px)}}
+@keyframes d2{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-20px)}}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 288px;gap:48px;align-items:start;width:100%;max-width:1200px}
+.hero-loc{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.hero-name{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(46px,6vw,74px);font-weight:900;line-height:.93;letter-spacing:-2.5px;margin-bottom:8px;color:var(--text)}
+.hero-name .hl{color:var(--green-mid);position:relative;display:inline-block}
+.hero-name .hl::after{content:'';position:absolute;bottom:3px;left:0;right:0;height:4px;background:var(--green-light);border-radius:2px;transform:scaleX(0);transform-origin:left;animation:ul 0.9s 0.8s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes ul{to{transform:scaleX(1)}}
+.hero-sub{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--muted);margin-bottom:20px}
+.hero-intro{font-size:13px;line-height:1.85;color:var(--text-mid);max-width:540px;margin-bottom:22px}
+.hero-intro strong{color:var(--text);font-weight:700}
+.hero-intro em{font-style:normal;color:var(--green);font-weight:600}
+.jpills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.jp{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:5px 13px;border-radius:100px;font-weight:600;transition:all .18s}
+.jp-edu{background:rgba(124,92,252,0.08);color:#6246d4;border:1px solid rgba(124,92,252,0.18)}
+.jp-work{background:rgba(26,122,74,0.08);color:var(--green);border:1px solid rgba(26,122,74,0.2)}
+.jp-loc{background:rgba(255,107,53,0.08);color:#c94514;border:1px solid rgba(255,107,53,0.18)}
+.jp:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.irow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;align-items:center}
+.ilbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-light);margin-right:2px}
+.itag{font-size:11px;padding:4px 11px;border-radius:6px;background:white;border:1px solid var(--border);color:var(--text-mid);font-weight:500;transition:all .15s}
+.itag:hover{border-color:var(--green-mid);background:var(--green-soft);color:var(--green)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:11px 22px;border-radius:10px;font-family:'Geist Mono',monospace;font-size:12px;font-weight:500;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:7px;border:none}
+.btn-g{background:var(--green);color:white;box-shadow:0 2px 12px rgba(26,122,74,0.2)}
+.btn-g:hover{background:var(--green-mid);transform:translateY(-2px);box-shadow:0 6px 24px rgba(26,122,74,0.3)}
+.btn-o{background:white;color:var(--text-mid);border:1.5px solid var(--border)}
+.btn-o:hover{border-color:var(--green-mid);color:var(--green);transform:translateY(-2px)}
+
+/* HERO RIGHT CARDS */
+.hero-right{display:flex;flex-direction:column;gap:11px;padding-top:4px}
+.hcard{background:white;border:1px solid var(--border);border-radius:14px;padding:16px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.04);transition:transform .2s,box-shadow .2s}
+.hcard:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.07)}
+.hcard-lbl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-light);margin-bottom:9px;font-weight:600}
+.edu-line{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--text);margin-bottom:2px}
+.edu-sub{font-size:11px;color:var(--muted);line-height:1.5}
+.iitem{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid var(--border)}
+.iitem:last-child{border-bottom:none;padding-bottom:0}
+.idot{width:6px;height:6px;border-radius:50%;background:var(--green-light);flex-shrink:0;margin-top:5px}
+.irole{font-size:11.5px;font-weight:700;color:var(--text);line-height:1.3}
+.ico{font-size:10.5px;color:var(--muted);margin-top:1px}
+.now-row{display:flex;align-items:flex-start;gap:8px}
+.now-dot{width:7px;height:7px;border-radius:50%;background:var(--green-light);animation:pulse 2s ease-in-out infinite;flex-shrink:0;margin-top:4px}
+.now-txt{font-size:11.5px;color:var(--text-mid);font-weight:500;line-height:1.5}
+.now-txt strong{color:var(--text);font-weight:700}
+.hstats{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.hst{text-align:center;padding:7px 4px}
+.hst-v{font-family:'Cabinet Grotesk',sans-serif;font-size:22px;font-weight:900;color:var(--green);letter-spacing:-1px}
+.hst-l{font-size:9px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:1px}
+
+/* SECTION */
+section{padding:80px 48px;position:relative;z-index:1}
+.sec-top{display:flex;align-items:baseline;gap:14px;margin-bottom:48px}
+.sec-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);background:var(--green-soft);padding:4px 10px;border-radius:4px;font-weight:600;flex-shrink:0}
+.sec-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:900;letter-spacing:-1.5px;color:var(--text)}
+.sec-hr{flex:1;height:1px;background:var(--border);margin-left:8px}
+
+/* PROJECT GRID */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pc{background:white;border:1.5px solid var(--border);border-radius:16px;padding:24px;transition:all .25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.pc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green-light));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.pc:hover{border-color:var(--border-strong);box-shadow:0 12px 40px rgba(26,122,74,0.1);transform:translateY(-4px)}
+.pc:hover::after{transform:scaleX(1)}
+.pc.wide{grid-column:span 2;flex-direction:row;gap:26px;align-items:stretch}
+.card-body{flex:1;display:flex;flex-direction:column}
+.card-vis{width:160px;flex-shrink:0;background:var(--green-soft);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--border);overflow:hidden}
+.ctop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.cicon{width:40px;height:40px;border-radius:10px;background:var(--green-soft);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px}
+.cbadge{font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;font-weight:600}
+.b-ai{background:rgba(124,92,252,0.1);color:#7c5cfc;border:1px solid rgba(124,92,252,0.2)}
+.b-data{background:rgba(26,122,74,0.1);color:var(--green);border:1px solid rgba(26,122,74,0.2)}
+.b-opt{background:rgba(255,107,53,0.1);color:var(--pop);border:1px solid rgba(255,107,53,0.2)}
+.b-viz{background:rgba(5,150,105,0.1);color:#059669;border:1px solid rgba(5,150,105,0.2)}
+.b-fashion{background:rgba(219,39,119,0.1);color:#be185d;border:1px solid rgba(219,39,119,0.2)}
+.p-head{font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.3px;color:var(--text);margin-bottom:4px;line-height:1.2}
+.p-tag{font-size:11px;color:var(--green-mid);font-weight:600;margin-bottom:9px;letter-spacing:.02em}
+.p-desc{font-size:12px;line-height:1.75;color:var(--muted);flex:1;margin-bottom:16px}
+.pstack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.stag{font-size:10px;padding:3px 8px;border-radius:5px;background:var(--bg);border:1px solid var(--border);color:var(--text-mid);font-weight:500}
+.cfoot{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border);margin-top:auto}
+.cmeta{font-size:11px;color:var(--muted-light)}
+.clink{font-size:11px;color:var(--green);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:4px;transition:gap .18s}
+.clink:hover{gap:8px}
+.btn-links{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn-gh{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;padding:5px 11px;border-radius:6px;background:var(--bg);border:1px solid var(--border);color:var(--text-mid);font-weight:600;text-decoration:none;transition:all .18s;letter-spacing:.02em}
+.btn-gh:hover{border-color:var(--green-mid);background:var(--green-soft);color:var(--green);transform:translateY(-1px)}
+.btn-gh.demo{background:var(--green);color:white;border-color:var(--green)}
+.btn-gh.demo:hover{background:var(--green-mid);border-color:var(--green-mid)}
+.btn-gh svg{width:12px;height:12px;fill:currentColor}
+.barchart{display:flex;align-items:flex-end;gap:4px;height:80px;padding:8px 10px 0;width:100%}
+.bv{flex:1;border-radius:4px 4px 0 0;min-height:6px;background:linear-gradient(180deg,var(--green-mid),var(--mint))}
+.mterm{font-size:10px;color:var(--green);text-align:left;width:100%;padding:10px;line-height:1.85}
+.td{color:var(--muted-light)}
+.tb{color:var(--green-mid);font-weight:700}
+.tw{color:var(--pop);font-weight:700}
+.tc{display:inline-block;width:6px;height:11px;background:var(--green);animation:blink 1s step-end infinite;vertical-align:text-bottom}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* SKILLS */
+.sk-section{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sk-layout{display:grid;grid-template-columns:1fr 2fr;gap:56px;align-items:start}
+.sk-intro h3{font-family:'Cabinet Grotesk',sans-serif;font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px}
+.sk-intro p{font-size:13px;line-height:1.8;color:var(--muted)}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sk-row{padding:13px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;transition:all .2s}
+.sk-row:hover{background:var(--green-soft);border-color:var(--border-strong)}
+.sk-name{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:800;margin-bottom:3px}
+.sk-sub{font-size:11px;color:var(--muted);margin-bottom:7px}
+.sk-bg{height:4px;background:var(--border);border-radius:100px;overflow:hidden}
+.sk-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--green-light));border-radius:100px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+
+/* ABOUT */
+.ab-layout{display:grid;grid-template-columns:3fr 2fr;gap:56px;align-items:start}
+.ab-text p{font-size:13.5px;line-height:1.9;color:var(--muted);margin-bottom:13px}
+.ab-text strong{color:var(--text);font-weight:600}
+.ab-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+.ab-link{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:8px;font-size:12px;text-decoration:none;font-weight:600;transition:all .18s}
+.al-g{background:var(--green-soft);color:var(--green);border:1px solid var(--border-strong)}
+.al-g:hover{background:var(--green-pale);transform:translateY(-1px)}
+.al-p{background:rgba(124,92,252,0.08);color:#7c5cfc;border:1px solid rgba(124,92,252,0.2)}
+.al-p:hover{background:rgba(124,92,252,0.14);transform:translateY(-1px)}
+.ab-qcard{background:var(--green-soft);border:1px solid var(--border-strong);border-radius:16px;padding:24px}
+.qc-title{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
+.q-item{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:12px}
+.q-item:last-child{border-bottom:none}
+.q-lbl{color:var(--muted);min-width:88px}
+.q-val{color:var(--text);font-weight:600}
+
+/* CONTACT */
+.ct-section{background:var(--green);padding:0}
+.ct-inner{max-width:680px;margin:0 auto;text-align:center;padding:72px 48px}
+.ct-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(34px,5vw,58px);font-weight:900;letter-spacing:-2px;color:white;margin-bottom:14px;line-height:1}
+.ct-sub{font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:36px}
+.ct-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-w{background:white;color:var(--green);padding:13px 26px;border-radius:10px;font-family:'Geist Mono',monospace;font-size:12px;font-weight:700;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+.btn-ow{background:transparent;color:white;padding:13px 26px;border-radius:10px;font-family:'Geist Mono',monospace;font-size:12px;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,0.4);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-ow:hover{border-color:white;background:rgba(255,255,255,0.1);transform:translateY(-2px)}
+
+footer{background:var(--accent);padding:24px 48px;display:flex;justify-content:space-between;align-items:center}
+.ft{font-size:11px;color:rgba(255,255,255,0.45)}
+.fl{display:flex;gap:20px}
+.fl a{font-size:11px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .18s}
+.fl a:hover{color:white}
+
+/* REVEAL — trigger immediately, low threshold */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:1100px){
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .pc.wide{grid-column:span 2}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .sk-layout{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav{padding:0 20px}
+  section{padding:56px 20px}
+  .hero{padding:88px 20px 56px}
+  .pgrid{grid-template-columns:1fr}
+  .pc.wide{grid-column:span 1;flex-direction:column}
+  .card-vis{width:100%;height:100px}
+  .ab-layout{grid-template-columns:1fr}
+  .sk-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  footer{padding:20px;flex-direction:column;gap:10px;text-align:center}
+  .ct-inner{padding:56px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><div class="nav-dot"></div>Anushriya Roy</div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://github.com/Anushriya24" target="_blank">GitHub</a></li>
+    <li><a href="#contact" class="nav-cta">Say hello →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="hero-inner">
+
+    <div class="hero-left">
+      <div class="hero-loc">📍 New Delhi → London</div>
+      <h1 class="hero-name">Anushriya<br><span class="hl">Roy.</span></h1>
+      <p class="hero-sub">MSc Analytics & Management · London Business School</p>
+
+      <p class="hero-intro">
+        I grew up in <strong>New Delhi</strong>, built my technical foundations with a <strong>BTech in Computer Science & Engineering</strong>, then moved to London for an <em>MSc in Analytics and Management at LBS</em> — where quantitative rigour meets business strategy. I've completed <strong>two internships</strong> applying data science to real industry problems, and I care about building things that go beyond the notebook and actually get used.
+        <br><br>
+        Outside work: tennis courts, good restaurants, sustainability debates, and a genuine passion for <strong>fashion tech</strong> — an industry I think data can transform.
+      </p>
+
+      <div class="jpills">
+        <span class="jp jp-edu">🎓 LBS — MSc Analytics & Management</span>
+        <span class="jp jp-edu">💻 BTech Computer Science & Engineering</span>
+        <span class="jp jp-work">💼 2+ Industry Internships</span>
+        <span class="jp jp-loc">📍 New Delhi, India</span>
+      </div>
+
+      <div class="irow">
+        <span class="ilbl">Beyond data —</span>
+        <span class="itag">🎾 Tennis</span>
+        <span class="itag">📚 Reading</span>
+        <span class="itag">🍜 Food & Dining</span>
+        <span class="itag">♻️ Sustainability</span>
+        <span class="itag">👗 Fashion Tech</span>
+      </div>
+
+      <div class="btns">
+        <a href="#projects" class="btn btn-g">See My Work ↓</a>
+        <a href="https://www.linkedin.com/in/anushriya24/" target="_blank" class="btn btn-o">LinkedIn ↗</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hcard">
+        <div class="hcard-lbl">Currently</div>
+        <div class="now-row">
+          <div class="now-dot"></div>
+          <div class="now-txt"><strong>MSc Analytics & Management</strong> at London Business School — advanced ML, optimisation & data strategy.</div>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-lbl">Education</div>
+        <div class="edu-line">London Business School</div>
+        <div class="edu-sub">MSc Analytics & Management · 2024–25</div>
+        <div style="height:9px"></div>
+        <div class="edu-line">BTech — Computer Science & Engineering</div>
+        <div class="edu-sub">Algorithms, data structures & software engineering</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-lbl">Experience</div>
+        <div class="iitem">
+          <div class="idot"></div>
+          <div><div class="irole">Data & Analytics Intern</div><div class="ico">Analysis, modelling & reporting</div></div>
+        </div>
+        <div class="iitem">
+          <div class="idot"></div>
+          <div><div class="irole">Technology Intern</div><div class="ico">Systems, tools & technical delivery</div></div>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-lbl">By the numbers</div>
+        <div class="hstats">
+          <div class="hst"><div class="hst-v">10+</div><div class="hst-l">Projects</div></div>
+          <div class="hst"><div class="hst-v">190k</div><div class="hst-l">Rows processed</div></div>
+          <div class="hst"><div class="hst-v">6+</div><div class="hst-l">Tech stacks</div></div>
+          <div class="hst"><div class="hst-v">3</div><div class="hst-l">APIs integrated</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--bg)">
+  <div class="sec-top">
+    <span class="sec-tag">01 — Work</span>
+    <h2 class="sec-title">Selected Projects</h2>
+    <div class="sec-hr"></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 18px;margin-bottom:32px;font-size:12px;color:var(--muted)">
+    <span style="font-size:16px">💡</span>
+    <span><strong style="color:var(--text-mid)">Note:</strong> "View Code" buttons link to <a href="https://github.com/Anushriya24" target="_blank" style="color:var(--green);font-weight:600;text-decoration:none">github.com/Anushriya24</a>. Individual repo links will update as projects are uploaded. The Tableau dashboard has a live link.</span>
+  </div>
+  <div class="pgrid">
+
+    <!-- FASHION DISCOVERY — featured wide -->
+    <div class="pc wide rv">
+      <div class="card-body">
+        <div class="ctop">
+          <div class="cicon">👗</div>
+          <span class="cbadge b-fashion">Fashion Tech · Gen AI</span>
+        </div>
+        <div class="p-head">Niche Brand Discovery Engine</div>
+        <div class="p-tag">Style-Driven Fashion Recommender — Claude API + Embeddings + Streamlit</div>
+        <p class="p-desc">A fashion discovery tool that takes your style preferences as natural language input — aesthetic, fit, values, price range — and surfaces niche, independent brands you'd actually want to wear. Uses semantic embeddings to match style descriptions against a curated brand database, then an LLM layer to explain <em>why</em> each brand fits your taste. Includes sustainability scoring, a "brands like X but smaller" mode, and shareable style profiles. Built to solve a real problem: mainstream recommendation engines only surface what's already popular.</p>
+        <div class="pstack">
+          <span class="stag">Python</span><span class="stag">Claude API</span><span class="stag">Sentence Transformers</span>
+          <span class="stag">Streamlit</span><span class="stag">Pandas</span><span class="stag">Semantic Search</span><span class="stag">NLP</span>
+        </div>
+        <div class="cfoot">
+          <div class="cmeta">👗 Style-to-brand matching &nbsp;·&nbsp; ♻️ Sustainability scoring</div>
+          <div class="btn-links"><a href="https://github.com/Anushriya24" target="_blank" class="btn-gh" title="Upload repo first — link goes to profile"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a></div>
+        </div>
+      </div>
+      <div class="card-vis" style="background:linear-gradient(160deg,#fdf2f8,#f0f7f2);min-height:180px">
+        <div style="padding:16px;width:100%">
+          <div style="font-size:9px;color:var(--muted);letter-spacing:.1em;margin-bottom:10px">STYLE INPUT → BRAND MATCH</div>
+          <div style="background:white;border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.5">"minimalist, sustainable,<br>Scandi aesthetic, under £200"</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="background:rgba(219,39,119,0.08);border:1px solid rgba(219,39,119,0.2);border-radius:6px;padding:6px 8px;font-size:10px;color:#be185d;font-weight:600">✦ Arket &nbsp;<span style="font-weight:400;color:var(--muted)">94% match</span></div>
+            <div style="background:rgba(26,122,74,0.08);border:1px solid rgba(26,122,74,0.2);border-radius:6px;padding:6px 8px;font-size:10px;color:var(--green);font-weight:600">✦ Colorful Standard &nbsp;<span style="font-weight:400;color:var(--muted)">91%</span></div>
+            <div style="background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.2);border-radius:6px;padding:6px 8px;font-size:10px;color:#7c5cfc;font-weight:600">✦ Wax London &nbsp;<span style="font-weight:400;color:var(--muted)">88%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHELF OPTIMISER -->
+    <div class="pc wide rv">
+      <div class="card-body">
+        <div class="ctop">
+          <div class="cicon">📦</div>
+          <span class="cbadge b-opt">Optimisation</span>
+        </div>
+        <div class="p-head">Retail Shelf Space Optimisation</div>
+        <div class="p-tag">Integer Programming Model — Gurobi + Streamlit Dashboard</div>
+        <p class="p-desc">An Integer Programming model built with Gurobi that finds the mathematically optimal product-to-shelf assignment — balancing demand elasticity, competitor pricing, and shelf constraints across 2,500+ products. Wrapped in an interactive Streamlit dashboard with Monte Carlo sensitivity analysis so any manager can stress-test results without touching a spreadsheet.</p>
+        <div class="pstack">
+          <span class="stag">Python</span><span class="stag">Gurobi</span><span class="stag">Streamlit</span>
+          <span class="stag">Plotly</span><span class="stag">Pandas</span><span class="stag">Monte Carlo</span><span class="stag">Integer Programming</span>
+        </div>
+        <div class="cfoot">
+          <div class="cmeta">📊 2,500+ products &nbsp;·&nbsp; 🎯 Revenue-maximising IP</div>
+          <div class="btn-links"><a href="https://github.com/Anushriya24" target="_blank" class="btn-gh" title="Upload repo first — link goes to profile"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a></div>
+        </div>
+      </div>
+      <div class="card-vis">
+        <div class="barchart">
+          <div class="bv" style="height:40%"></div>
+          <div class="bv" style="height:65%;background:linear-gradient(180deg,#ff6b35,rgba(255,107,53,0.4))"></div>
+          <div class="bv" style="height:82%"></div>
+          <div class="bv" style="height:52%"></div>
+          <div class="bv" style="height:100%"></div>
+          <div class="bv" style="height:60%"></div>
+          <div class="bv" style="height:73%"></div>
+        </div>
+        <div style="font-size:9px;color:var(--muted);padding:4px 10px 10px;letter-spacing:.08em;text-align:center">REVENUE / SHELF TYPE</div>
+      </div>
+    </div>
+
+    <!-- LinkedInBot -->
+    <div class="pc rv">
+      <div class="ctop"><div class="cicon">💼</div><span class="cbadge b-ai">Gen AI</span></div>
+      <div class="p-head">AI Persona Chatbot — LinkedInBot</div>
+      <div class="p-tag">Generative AI · LiteLLM + Gemma-3-27B + Gradio</div>
+      <p class="p-desc">An AI chatbot that speaks exclusively in LinkedIn corporate-speak — warmly condescending, self-promoting, convinced every setback is a "pivot season." Showcases advanced prompt engineering: a tightly designed persona using Gemma-3-27B that holds character no matter what you throw at it. The Gradio UI is styled to resemble LinkedIn.</p>
+      <div class="pstack">
+        <span class="stag">Python</span><span class="stag">LiteLLM</span><span class="stag">Gemma-3-27B</span>
+        <span class="stag">Gradio</span><span class="stag">Prompt Engineering</span>
+      </div>
+      <div class="cfoot"><div class="cmeta">🤖 Custom AI persona design</div><div class="btn-links"><a href="https://github.com/Anushriya24" target="_blank" class="btn-gh" title="Upload repo first — link goes to profile"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a></div></div>
+    </div>
+
+    <!-- APO -->
+    <div class="pc rv">
+      <div class="ctop"><div class="cicon">🔁</div><span class="cbadge b-ai">LLM Research</span></div>
+      <div class="p-head">Automated Prompt Optimisation (OPRO)</div>
+      <div class="p-tag">LLM Meta-Prompting · Iterative Evaluation Loop</div>
+      <p class="p-desc">Implemented the OPRO framework — a meta-prompting loop where an LLM iteratively proposes better prompts, scores them on a held-out test set, and keeps the winners. Accuracy climbed from 0.62 to 0.89 over 10 iterations with zero manual prompt tweaking.</p>
+      <div class="pstack">
+        <span class="stag">Python</span><span class="stag">LLMs</span><span class="stag">OPRO</span>
+        <span class="stag">Meta-prompting</span><span class="stag">Jupyter</span>
+      </div>
+      <div class="cfoot" style="flex-direction:column;align-items:flex-start;gap:10px">
+        <div class="mterm" style="padding:0">
+          <span class="td">$ </span>run_opro(n=10)<br>
+          <span class="td">iter 01 →</span> <span class="tb">0.62</span><br>
+          <span class="td">iter 10 →</span> <span class="tw">best: 0.89</span> <span class="tc"></span>
+        </div>
+        <div class="btn-links"><a href="https://github.com/Anushriya24" target="_blank" class="btn-gh" title="Upload repo first — link goes to profile"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a></div>
+      </div>
+    </div>
+
+    <!-- ZipVend -->
+    <div class="pc rv">
+      <div class="ctop"><div class="cicon">🗄️</div><span class="cbadge b-data">Data Engineering</span></div>
+      <div class="p-head">ZipVend Data Platform</div>
+      <div class="p-tag">End-to-End Data Engineering · REST API + SQLite + SQL Analytics</div>
+      <p class="p-desc">Built a complete data platform for a London vending machine network. Queried a live REST API for weekly sales and restock data, designed a normalised SQLite schema with composite keys and FK constraints, then used SQL analytics to independently verify £48k of API-reported revenue — catching discrepancies the engineering team had missed.</p>
+      <div class="pstack">
+        <span class="stag">Python</span><span class="stag">SQLite</span><span class="stag">REST API</span>
+        <span class="stag">DBeaver</span><span class="stag">Pandas</span><span class="stag">SQL Analytics</span>
+      </div>
+      <div class="cfoot"><div class="cmeta">⚡ 49 machines · £48k verified</div><div class="btn-links"><a href="https://github.com/Anushriya24" target="_blank" class="btn-gh" title="Upload repo first — link goes to profile"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a></div></div>
+    </div>
+
+    <!-- Energy ETL -->
+    <div class="pc rv">
+      <div class="ctop"><div class="cicon">🔌</div><span class="cbadge b-data">ETL Pipeline</span></div>
+      <div class="p-head">UK Energy Demand ETL Pipeline</div>
+      <div class="p-tag">Data Engineering · National Grid + Open-Meteo API · 2015–2025</div>
+      <p class="p-desc">Built the full ETL pipeline for 10 years of UK electricity demand data — 189,000 rows across two weather APIs with mismatched timezones and format inconsistencies. Harmonised National Grid settlement-period data with Open-Meteo forecasts and observations, producing three clean datasets for downstream ML energy forecasting.</p>
+      <div class="pstack">
+        <span class="stag">Python</span><span class="stag">Pandas</span><span class="stag">Open-Meteo API</span>
+        <span class="stag">PostgreSQL</span><span class="stag">ETL</span><span class="stag">Time Series</span>
+      </div>
+      <div class="cfoot"><div class="cmeta">📡 189,744 rows · 2015–2025</div><div class="btn-links"><a href="https://github.com/Anushriya24" target="_blank" class="btn-gh" title="Upload repo first — link goes to profile"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a></div></div>
+    </div>
+
+    <!-- Advertising -->
+    <div class="pc rv">
+      <div class="ctop"><div class="cicon">📢</div><span class="cbadge b-opt">Analytics & Opt.</span></div>
+      <div class="p-head">Ad Campaign Budget Optimisation</div>
+      <div class="p-tag">Google Adwords · Linear Programming · DSP Modelling</div>
+      <p class="p-desc">Modelled a Google Adwords campaign for a UK fashion retailer as a mathematical optimisation problem — which keywords to bid on and how to distribute budget to maximise ROI. Used historical DSP data and cost-per-click analysis to find the optimal advertising strategy under budget constraints.</p>
+      <div class="pstack">
+        <span class="stag">Python</span><span class="stag">Linear Programming</span><span class="stag">Numpy</span>
+        <span class="stag">Matplotlib</span><span class="stag">DSP Modelling</span>
+      </div>
+      <div class="cfoot"><div class="cmeta">🎯 Keyword + budget optimisation</div><div class="btn-links"><a href="https://github.com/Anushriya24" target="_blank" class="btn-gh" title="Upload repo first — link goes to profile"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a></div></div>
+    </div>
+
+    <!-- Tableau -->
+    <div class="pc rv">
+      <div class="ctop"><div class="cicon">🏠</div><span class="cbadge b-viz">Tableau</span></div>
+      <div class="p-head">London House Price Dashboard</div>
+      <div class="p-tag">Tableau Public · Geospatial & Time Series Visualisation</div>
+      <p class="p-desc">An interactive Tableau dashboard exploring how time, property type, and location jointly drive London's house prices — with dynamic filters letting you explore borough-level trends across multiple years. Published on Tableau Public.</p>
+      <div class="pstack">
+        <span class="stag">Tableau</span><span class="stag">Data Visualisation</span>
+        <span class="stag">Geospatial</span><span class="stag">Time Series</span>
+      </div>
+      <div class="cfoot">
+        <div class="cmeta">📍 London-wide · Multi-year</div>
+        <div class="btn-links"><a href="https://github.com/Anushriya24" target="_blank" class="btn-gh" title="Upload repo first — link goes to profile"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a><a href="https://public.tableau.com/app/profile/anushriya.roy/viz/Book1_17638156520480/LondonHousePricesHowTimePropertyTypeLocationShapeValue" target="_blank" class="btn-gh demo"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Live</a></div>
+      </div>
+    </div>
+
+    <!-- Group Projects -->
+    <div class="pc rv">
+      <div class="ctop"><div class="cicon">🤝</div><span class="cbadge b-data">Collaboration</span></div>
+      <div class="p-head">Collaborative Data Analysis Projects</div>
+      <div class="p-tag">Group Projects · EDA, Statistical Modelling & Reporting</div>
+      <p class="p-desc">Two end-to-end collaborative data science projects covering exploratory analysis, statistical modelling, and stakeholder-ready storytelling. Delivered as polished interactive HTML reports — because good analysis means nothing if no one can act on it.</p>
+      <div class="pstack">
+        <span class="stag">Python</span><span class="stag">Pandas</span><span class="stag">Seaborn</span>
+        <span class="stag">Statsmodels</span><span class="stag">HTML Reports</span>
+      </div>
+      <div class="cfoot"><div class="cmeta">👥 Collaborative · Full analysis lifecycle</div><div class="btn-links"><a href="https://github.com/Anushriya24" target="_blank" class="btn-gh" title="Upload repo first — link goes to profile"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a></div></div>
+    </div>
+
+    <!-- Cloudflare Workers AI -->
+    <div class="pc rv">
+      <div class="ctop">
+        <div class="cicon">☁️</div>
+        <span class="cbadge b-ai">Deployed API</span>
+      </div>
+      <div class="p-head">Customer Feedback Analyser API</div>
+      <div class="p-tag">Cloudflare Workers · LLaMA 3.1 · OpenAPI 3.1 — Live & Deployed</div>
+      <p class="p-desc">A fully deployed serverless API built on Cloudflare Workers that analyses unstructured customer feedback at scale. Sends raw text to LLaMA 3.1-8B via Workers AI and returns a structured response: a concise summary, sentiment classification (Positive / Neutral / Negative), and key product themes. Fully documented with an OpenAPI 3.1 interface — built to show how modern serverless + AI tooling can turn messy feedback into actionable product insights.</p>
+      <div class="pstack">
+        <span class="stag">TypeScript</span><span class="stag">Cloudflare Workers</span><span class="stag">LLaMA 3.1</span>
+        <span class="stag">Workers AI</span><span class="stag">OpenAPI 3.1</span><span class="stag">Serverless</span>
+      </div>
+      <div class="cfoot">
+        <div class="cmeta">🚀 Live deployed · Sentiment + theme extraction</div>
+        <div class="btn-links">
+          <a href="https://github.com/Anushriya24/cloudflare-workers-ai-feedback" target="_blank" class="btn-gh"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View Code</a>
+          <a href="https://dawn-mouse-3efc.anushriyaroy24.workers.dev" target="_blank" class="btn-gh demo"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live API</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sk-section">
+  <div class="sec-top">
+    <span class="sec-tag">02 — Skills</span>
+    <h2 class="sec-title">Technical Toolkit</h2>
+    <div class="sec-hr"></div>
+  </div>
+  <div class="sk-layout">
+    <div class="sk-intro rv">
+      <h3>Built on a foundation<br>of real projects.</h3>
+      <p>Every skill here has been used to ship something real — not just practised in isolation. I believe in understanding tools deeply rather than collecting them.</p>
+    </div>
+    <div class="sk-grid" id="skGrid">
+      <div class="sk-row rv"><div class="sk-name">Python</div><div class="sk-sub">pandas · numpy · scikit-learn · requests</div><div class="sk-bg"><div class="sk-fill" data-w="95"></div></div></div>
+      <div class="sk-row rv"><div class="sk-name">SQL & Databases</div><div class="sk-sub">SQLite · PostgreSQL · DBeaver · Schema design</div><div class="sk-bg"><div class="sk-fill" data-w="88"></div></div></div>
+      <div class="sk-row rv"><div class="sk-name">Optimisation</div><div class="sk-sub">Gurobi · Integer Programming · Linear Programming</div><div class="sk-bg"><div class="sk-fill" data-w="85"></div></div></div>
+      <div class="sk-row rv"><div class="sk-name">Data Visualisation</div><div class="sk-sub">Tableau · Plotly · Seaborn · Matplotlib</div><div class="sk-bg"><div class="sk-fill" data-w="90"></div></div></div>
+      <div class="sk-row rv"><div class="sk-name">Gen AI & LLMs</div><div class="sk-sub">Claude API · LiteLLM · Prompt Engineering · OPRO</div><div class="sk-bg"><div class="sk-fill" data-w="82"></div></div></div>
+      <div class="sk-row rv"><div class="sk-name">ETL Pipelines</div><div class="sk-sub">API integration · Data cleaning · Multi-source merge</div><div class="sk-bg"><div class="sk-fill" data-w="87"></div></div></div>
+      <div class="sk-row rv"><div class="sk-name">ML & Statistics</div><div class="sk-sub">Regression · Feature engineering · Model validation</div><div class="sk-bg"><div class="sk-fill" data-w="82"></div></div></div>
+      <div class="sk-row rv"><div class="sk-name">Streamlit & Gradio</div><div class="sk-sub">Interactive dashboards · App deployment</div><div class="sk-bg"><div class="sk-fill" data-w="78"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-top rv">
+    <span class="sec-tag">03 — Me</span>
+    <h2 class="sec-title">About Anushriya</h2>
+    <div class="sec-hr"></div>
+  </div>
+  <div class="ab-layout">
+    <div class="ab-text rv">
+      <p>I'm <strong>Anushriya Roy</strong> — originally from New Delhi, India, now based in London completing my <strong>MSc in Analytics and Management at London Business School</strong>. My BTech in Computer Science gave me the technical foundations; LBS is where I'm learning to point them at business problems that matter.</p>
+      <p>My work sits across <strong>operations research</strong> (integer programming, advertising optimisation), <strong>data engineering</strong> (multi-source ETL, API integration, relational schema design), and <strong>AI engineering</strong> (LLM applications, semantic search, automated prompt optimisation). I'm most energised when these disciplines intersect.</p>
+      <p>One area I keep coming back to is <strong>fashion tech</strong> — an industry that generates enormous data but is still surprisingly underserved by modern analytics. From demand forecasting and sustainability measurement to personalised discovery, I think there's a huge opportunity to build tools that are both technically interesting and genuinely useful to people.</p>
+      <p>Outside of work: tennis, books, good food, and thinking about how <strong>sustainable systems</strong> get built and measured. I care about doing things properly. ☕</p>
+      <div class="ab-links">
+        <a href="https://www.linkedin.com/in/anushriya24/" target="_blank" class="ab-link al-p">🔗 LinkedIn @anushriya24</a>
+        <a href="https://public.tableau.com/app/profile/anushriya.roy" target="_blank" class="ab-link al-g">📊 Tableau Public</a>
+        <a href="#contact" class="ab-link al-g">✉️ Get in touch</a>
+      </div>
+    </div>
+    <div class="ab-qcard rv">
+      <div class="qc-title">Quick Facts</div>
+      <div class="q-item"><span class="q-lbl">From</span><span class="q-val">New Delhi, India 🇮🇳</span></div>
+      <div class="q-item"><span class="q-lbl">Based in</span><span class="q-val">London, UK 🇬🇧</span></div>
+      <div class="q-item"><span class="q-lbl">Studying</span><span class="q-val">MSc Analytics @ LBS</span></div>
+      <div class="q-item"><span class="q-lbl">Background</span><span class="q-val">BTech Computer Science</span></div>
+      <div class="q-item"><span class="q-lbl">Interests</span><span class="q-val">Fashion · Sustainability</span></div>
+      <div class="q-item"><span class="q-lbl">Off-duty</span><span class="q-val">Tennis · Books · Food 🎾</span></div>
+      <div class="q-item"><span class="q-lbl">Status</span><span class="q-val" style="color:var(--green)">Open to roles ✓</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="ct-section" id="contact">
+  <div class="ct-inner">
+    <h2 class="ct-title">Let's work<br>together.</h2>
+    <p class="ct-sub">Open to data science, ML engineering, analytics, and fashion-tech roles.<br>I bring rigour, creativity, and a genuine love of building things that ship.</p>
+    <div class="ct-btns">
+      <a href="mailto:anushriya@example.com" class="btn-w">✉️ Send an Email</a>
+      <a href="https://www.linkedin.com/in/anushriya24/" target="_blank" class="btn-ow">🔗 Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">© 2025 Anushriya Roy. Built with care.</div>
+  <div class="fl">
+    <a href="https://github.com/Anushriya24" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/anushriya24/" target="_blank">LinkedIn</a>
+    <a href="https://public.tableau.com/app/profile/anushriya.roy" target="_blank">Tableau</a>
+    <a href="#projects">Projects ↑</a>
+  </div>
+</footer>
+
+<script>
+  // Reveal — very low threshold so cards show immediately when entering viewport
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.04, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+  // Stagger project cards
+  document.querySelectorAll('.pgrid .rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 3 * 0.08) + 's';
+  });
+
+  // Stagger skill rows
+  document.querySelectorAll('.sk-grid .rv').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.06) + 's';
+  });
+
+  // Animate skill bars
+  const skObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.sk-fill').forEach(bar => {
+          setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, 200);
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  const skGrid = document.getElementById('skGrid');
+  if (skGrid) skObs.observe(skGrid);
+
+  // Make hero elements visible immediately (no delay needed)
+  document.querySelectorAll('.hero .rv').forEach(el => el.classList.add('in'));
+</script>
+</body>
+</html>
